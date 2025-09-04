@@ -9,7 +9,7 @@ class std():
         self.height= self.root.winfo_screenheight()
         self.root.geometry(f"{self.width}x{self.height}+0+0")
 
-        title=tk.Label(self.root,text="Student record Management System",bd=4,relief="raised",bg=self.clr(100,180,100),font=("Elephant",40,"bold"))
+        title=tk.Label(self.root,text="Student record Management System",bd=4,relief="raised",bg=self.clr(140,180,100),font=("Elephant",40,"bold"))
 
         title.pack(side="top",fill="x")
 
@@ -17,7 +17,7 @@ class std():
         optFrame=tk.Frame(self.root,bd=5,relief="ridge",bg=self.clr(140,160,200))
         optFrame.place(width=self.width/3+20,height=self.height-202,x=50,y=100)
 
-        addbutton=tk.Button(optFrame,text="ADD STUDENT",bd=4,relief="raised",bg="light grey",width=30,font=("Arial",16,"bold"),height=2)
+        addbutton=tk.Button(optFrame,command=self.addFrameFun,text="ADD STUDENT",bd=4,relief="raised",bg="light grey",width=30,font=("Arial",16,"bold"),height=2)
 
         addbutton.grid(row=1,column=0,padx=60,pady=40) 
 
@@ -71,7 +71,10 @@ class std():
         self.table["show"]="headings"
 
         self.table.pack(fill="both",expand=1)
-
+    
+    def addFrameFun(self):
+        self.addFrame=tk.Frame(self.root,bd=5,relief="ridge",bg=self.clr(150,180,250))
+        self.addFrame.place(width=self.width/3, height=self.height-220,x=self.width/3+80,y=100)
 
 
     def clr(self,r,g,b):
