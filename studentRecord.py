@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 class std():
+
     def __init__(self,root):
         self.root=root
         self.root.title("student Record")
@@ -73,8 +75,57 @@ class std():
         self.table.pack(fill="both",expand=1)
     
     def addFrameFun(self):
+        if hasattr(self, 'addFrame') and self.addFrame.winfo_exists():
+            self.addFrame.destroy()
+
         self.addFrame=tk.Frame(self.root,bd=5,relief="ridge",bg=self.clr(150,180,250))
-        self.addFrame.place(width=self.width/3, height=self.height-220,x=self.width/3+80,y=100)
+        self.addFrame.place(width=self.width/3, height=self.height-330,x=self.width/3+80,y=100)
+
+        rnlabel=tk.Label(self.addFrame,text="Roll_no:",bg=self.clr(150,180,250),font=("arial",15,"bold"))
+        rnlabel.grid(row=0,column=0,padx=20,pady=30)
+        self.rollNo=tk.Entry(self.addFrame,width=20,font=("arial",15,"bold"),bd=3)
+        self.rollNo.grid(row=0,column=1,padx=10,pady=30)
+
+        rnlabel2=tk.Label(self.addFrame,text="Name:",bg=self.clr(150,180,250),font=("arial",15,"bold"))
+        rnlabel2.grid(row=1,column=0,padx=20,pady=30)
+        self.Name_of_stud=tk.Entry(self.addFrame,width=20,font=("arial",15,"bold"),bd=3)
+        self.Name_of_stud.grid(row=1,column=1,padx=10,pady=20)
+
+
+        rnlabel3=tk.Label(self.addFrame,text="F_Name:",bg=self.clr(150,180,250),font=("arial",15,"bold"))
+        rnlabel3.grid(row=2,column=0,padx=20,pady=30)
+        self.fName_of_stud=tk.Entry(self.addFrame,width=20,font=("arial",15,"bold"),bd=3)
+        self.fName_of_stud.grid(row=2,column=1,padx=10,pady=20)
+        
+        rnlabel4=tk.Label(self.addFrame,text="Subject:",bg=self.clr(150,180,250),font=("arial",15,"bold"))
+        rnlabel4.grid(row=3,column=0,padx=20,pady=30)
+        self.Subject=tk.Entry(self.addFrame,width=20,font=("arial",15,"bold"),bd=3)
+        self.Subject.grid(row=3,column=1,padx=10,pady=20)
+
+        rnlabel5=tk.Label(self.addFrame,text="Grades:",bg=self.clr(150,180,250),font=("arial",15,"bold"))
+        rnlabel5.grid(row=4,column=0,padx=20,pady=30)
+        self.Grades=tk.Entry(self.addFrame,width=20,font=("arial",15,"bold"),bd=3)
+        self.Grades.grid(row=4,column=1,padx=10,pady=20)
+
+        Submitbutton1=tk.Button(self.addFrame,text="Submit_Info",bd=2,relief="raised",bg="light grey",width=20,font=("Arial",16,"bold"),height=1)
+        Submitbutton1.grid(row=5,column=1,padx=10,pady=14) 
+
+        cancelbutton=tk.Button(self.addFrame, text="Cancel", bd=2, relief="raised", bg="light grey", width=20, font=("Arial",16,"bold"), height=1, command=self.addFrame.destroy)
+        cancelbutton.grid(row=6, column=1, padx=10, pady=10)
+
+    def addfun(self):
+        rn=self.rollNo.get()
+        name=self.Name_of_stud.get()
+        fname=self.fName_of_stud.get()
+        sub=self.Subject.get()
+        grade=self.Grades.get()
+
+        if rn and name and fname and sub and grade:
+            rNo=int(rn)
+            
+        
+        else:
+            tk.messagebox.showerror("Error","Please Fill all input fields")
 
 
     def clr(self,r,g,b):
