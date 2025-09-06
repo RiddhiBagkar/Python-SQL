@@ -27,7 +27,7 @@ class std:
         addbutton.grid(row=1, column=0, padx=60, pady=40)
 
         Searchbutton = tk.Button(optFrame, text="SEARCH STUDENT",
-                                 bd=4, relief="raised", bg="light grey",
+                                 bd=4, relief="raised",command=self.search_student, bg="light grey",
                                  width=30, font=("Arial", 16, "bold"), height=2)
         Searchbutton.grid(row=2, column=0, padx=60, pady=40)
 
@@ -198,6 +198,10 @@ class std:
 
     def clr(self,r,g,b):
         return f"#{r:02x}{g:02x}{b:02x}"
+    
+    def search_student(self):
+        pass 
+
 
 
 root = tk.Tk()
